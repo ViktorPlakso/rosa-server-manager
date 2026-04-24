@@ -1,0 +1,34 @@
+{
+  "name": "cockpit-electron-wrapper",
+  "version": "1.0.0",
+  "description": "Desktop wrapper for local Cockpit web UI",
+  "main": "main.js",
+  "author": "local-admin",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux AppImage rpm deb",
+    "lint:check": "node --check main.js && node --check preload.js"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "local.rosa.cockpit.wrapper",
+    "productName": "ROSA Cockpit",
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "rpm",
+        "deb"
+      ],
+      "category": "System"
+    }
+  }
+}
